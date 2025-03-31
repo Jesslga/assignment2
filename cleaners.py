@@ -1,9 +1,10 @@
-import pandas as pd
-
+"""Cleans the Data"""
 def filter_us_public_stations(df):
+    """Filters the Data to only include US Public Stations"""
     return df[(df['Country'] == 'US') | (df['EV Workplace Charging'] == "False")]
 
 def summarize_station_data(df):
+    """Summarizes the Station Data"""
     summary = df.groupby('State').agg(
         num_EV_charge_stations=('ID', 'count'),
         num_EV_Level1=('EV Level1 EVSE Num', 'sum'),

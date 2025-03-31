@@ -1,4 +1,6 @@
-from loaders import get_google_drive_csv_specified_columns, get_google_drive_csv, load_json_google_drive
+"""Main Script to run the analysis"""
+from loaders import (get_google_drive_csv_specified_columns, 
+                     get_google_drive_csv, load_json_google_drive)
 from cleaners import filter_us_public_stations, summarize_station_data
 
 if __name__ == "__main__":
@@ -17,7 +19,8 @@ if __name__ == "__main__":
         'EV Workplace Charging': str
     }
 
-    afs_df = get_google_drive_csv_specified_columns('1UhsY-GB1JwII_OnYaAB5nJSCZsbaZDdE', keep_columns, col_data_type)
+    afs_df = get_google_drive_csv_specified_columns(
+        '1UhsY-GB1JwII_OnYaAB5nJSCZsbaZDdE', keep_columns, col_data_type)
     afs_us = filter_us_public_stations(afs_df)
     charge_summary = summarize_station_data(afs_us)
 
