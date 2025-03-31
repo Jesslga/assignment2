@@ -7,7 +7,8 @@ import requests
 def get_google_drive_csv_specified_columns(file_id, columns_to_keep, datatype):
     """Loads a CSV file from Google Drive with specified columns and data types"""
     download_url = f'https://drive.google.com/uc?id={file_id}'
-    response = requests.get(download_url, timeout=10)    response.raise_for_status()
+    response = requests.get(download_url, timeout=10)    
+    response.raise_for_status()
     df = pd.read_csv(io.StringIO(response.text), usecols=columns_to_keep, dtype=datatype)
     return df
 
